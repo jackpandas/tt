@@ -1,0 +1,38 @@
+// h2 Form test
+// script.
+//    document.write("hello world");
+#t-form
+    form(method="POST", action="/user")
+     input(type="hidden", name="_method", value="PUT")
+     ul
+       li BJJ
+            input(type="radio", name="t-type", id="t-type", value="1", checked="checked")
+        li MMA
+            input(type="radio", name="t-type", id="t-type", value="2")
+        li Cardio
+            input(type="radio", name="t-type", id="t-type", value="3")
+        li Yoga
+            input(type="radio", name="t-type", id="t-type", value="4")
+
+     p
+     p Intensity
+     p
+     - for(var i=1;i<11;i++)
+        - if(i === 5)
+           input(type="radio", name="t-i", id="t-i"+i, value=i, checked="checked")
+          - else
+                input(type="radio", name="t-i", id="t-i"+i, value=i)
+     p Enjoyment
+     p
+     - for(var i=1;i<11;i++)
+        - if(i === 5)
+            input(type="radio", name="t-e", id="t-e"+i, value=i, checked="checked")
+           - else
+                input(type="radio", name="t-e", id="t-e"+i, value=i)    
+     p
+     - each val in ["Positions", "Notes", "Injuries", "Goals"]
+        input(type="text", name="t-"+val.toLowerCase(), id="t-"+val.toLowerCase(), placeholder=val)
+        p 
+      input(pattern="[0-9]{4}", type="text", name="t-sec", id="t-sec", placeholder="PIN", required)
+     p
+      input(type="submit")
